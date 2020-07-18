@@ -43,17 +43,16 @@ test_y_data=outputall[index,:]
 model =tf.keras.Sequential([
     Dense(40,activation='relu',input_dim=11),
     Dense(300,activation='relu'),
-
     Dense(1,activation='relu'),
     ])
 model.compile(optimizer='rmsprop', loss='mse',metrics=['mae'])#Adam
 
-history= model.fit(train_x_data,train_y_data,batch_size=20,epochs=805)
+history= model.fit(train_x_data,train_y_data,batch_size=20,epochs=800)
 
-model.save('my_model_2.h5') 
-
+model.save('my_model.h5') 
+##数据可视化
 from pylab import mpl
-mpl.rcParams['font.sans-serif'] = ['SimHei'] 
+mpl.rcParams['font.sans-serif'] = ['SimHei'] ##设置字体
 mpl.rcParams['axes.unicode_minus'] = False
 fig1=plt.figure
 plt.xlabel('reference( 10^-5)')
@@ -71,7 +70,7 @@ plt.plot(a,b,c='red')
 plt.text(7000,2000,r'$R^2=%.4f$'%r2,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
 plt.text(7000,3000,r'$MSEP=%.4f$'%msep,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
 plt.text(7000,4000,r'$RMSEP=%.4f$'%rmsep,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
-
+plt.savefig('1.png',dpi=1080)
 plt.savefig('1._副本.png',dpi=600)
 plt.show()
 

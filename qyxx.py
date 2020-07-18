@@ -22,8 +22,9 @@ from sklearn.metrics import r2_score,mean_squared_error
 
 inputa = pd.read_excel(r'C:/Users/Lenovo/Desktop/MATLAB/迁移学习/学习模型.xlsx',sheet_name="input")
 outputa =pd.read_excel(r'C:/Users/Lenovo/Desktop/MATLAB/迁移学习/学习模型.xlsx',sheet_name="output")
-index= np.arange(10)
-index2= np.arange(53)
+index= np.arange(10)##用10个样品训练。
+
+index2= np.arange(53)##测试集。这里的训练集与预测集的样品与预训练模型不是同一批
 index3=np.delete(index2,index)
 inputal=inputa.values
 outputall=outputa.values
@@ -62,6 +63,6 @@ plt.plot(a,b,c='red')
 plt.text(3200,500,r'$R^2=%.4f$'%r2,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
 plt.text(3200,1000,r'$MSEP=%.4f$'%msep,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
 plt.text(3200,1500,r'$RMSEP=%.4f$'%rmsep,fontsize=10,verticalalignment="bottom",horizontalalignment="left")
-plt.savefig('2.1.1.png',dpi=1080)
-plt.savefig('2.1.1_副本.png',dpi=600)
+plt.savefig('2.png',dpi=1080)
+plt.savefig('2._副本.png',dpi=600)
 plt.show()
